@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
         createVerticalPath(map, pathX);
     }
 
-    // Генерируем случайные горизонтальные проходы
+    // Генерируем случайные горизоонтальные проходы
     var numberOfHorizontalPaths = Math.floor(Math.random() * 3) + 3; 
     for (var h = 0; h < numberOfHorizontalPaths; h++) {
         var pathY = Math.floor(Math.random() * 22) + 1; 
@@ -218,14 +218,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 var currentTile = field.children[enemy.y * 40 + enemy.x];
                 currentTile.classList.remove('tileE');
 
-
+                if (enemy.x === hero.x && enemy.y === hero.y) {
+                    alert('Игра окончена, перезагрузите страницу');
+                    return; // Выходим из функции, так как игра окончена
+                }
                 // Перемещаем врага в новую клетку
                 enemy.x = newX;
                 enemy.y = newY;
                 var newTile = field.children[newY * 40 + newX];
                 newTile.classList.add('tileE');
-
-                // Обновляем полосу здоровья врага
 
             }
         });
@@ -274,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             var newTile = field.children[newY * 40 + newX];
             if (newTile.classList.contains('tileSW')) {
-                newTile.classList.remove('tileSW');
+                newTile.classList.remove('tileSW'); //Удаляем меч
             }
 
 
@@ -297,16 +298,16 @@ document.addEventListener("DOMContentLoaded", function () {
         // Определяем действие в зависимости от нажатой клавиши
         switch (key) {
             case 'w':
-                moveHero(0, -1); // Перемещаем героя вверх
+                moveHero(0, -1); 
                 break;
             case 'a':
-                moveHero(-1, 0); // Перемещаем героя влево
+                moveHero(-1, 0); 
                 break;
             case 's':
-                moveHero(0, 1); // Перемещаем героя вниз
+                moveHero(0, 1); 
                 break;
             case 'd':
-                moveHero(1, 0); // Перемещаем героя вправо
+                moveHero(1, 0); 
                 break;
         }
     });
@@ -389,5 +390,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    console.log(map);
+    //console.log(map);
 });
